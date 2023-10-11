@@ -17,7 +17,7 @@
 - [Dataset Overview](#dataset-overview)
 - [Methodology](#methodology)
 - [Data Cleaning](#data-cleaning)
-- [Feature Engineering](#feature-engineering)
+- [Exploratory Analysis](#feature-engineering)
 - [Training Model](#training-model)
 - [Prediction and Model Comparison](#prediction-and-model-comparison)
 - [Conclusion](#conclusion)
@@ -30,52 +30,35 @@
 
 ## Business Understanding
 
-The World Health Organization (WHO) estimates that 17.9 million people die from cardiovascular diseases (CVDs), which are the leading cause of death worldwide in the year 2022. It is possible to reduce the numbers of premature death caused by cardiovascular diseases (CVDs) if it is diagnosed in earlier stage. By studying the diagnostic test results of the people, it is possible to detect if the patient is at the high risk of cardiovascular disease. This analysis can be achieved with the help of the machine learning models. Through this project, we intend to develop a prediction models to
-understand existing data and filter out the target population who could benefit by taking
-precautionary measures at early stages. This analysis will help the patients who are at high risk of
-cardiovascular disease to take precautionary measures.
-The goal of this project is to predict how susceptible a patient is to a cardiovascular disease (CVD)
-based on the various diagnostic test measures in the database. In this project, we will use multiple
-machine learning models and test each model’s accuracy using Classification Accuracy, Confusion
-Matrix, Precision, Recall and the F1 Score. They each help us evaluate the models and chose a
-robust model. Typically, in a business model, Naive Bayes and Logistic Regression are the go-to
-for ranking predictions by probability, however, we will also try other tress-based models which
-are better is interpretation. We will use R language to perform the analysis and building a model.
-The data which we will be using for the analysis is taken from the Kaggle.
+The World Health Organization (WHO) estimates that 17.9 million people die from cardiovascular diseases (CVDs), which are the leading cause of death worldwide in the year 2022. It is possible to reduce the numbers of premature death caused by cardiovascular diseases (CVDs) if it is diagnosed in earlier stage. By studying the diagnostic test results of the people, it is possible to detect if the patient is at the high risk of cardiovascular disease. This analysis can be achieved with the help of the machine learning models. Through this project, we intend to develop a prediction models to understand existing data and filter out the target population who could benefit by taking precautionary measures at early stages. This analysis will help the patients who are at high risk of cardiovascular disease to take precautionary measures. The goal of this project is to predict how susceptible a patient is to a cardiovascular disease (CVD) based on the various diagnostic test measures in the database. In this project, we will use multiple machine learning models and test each model’s accuracy using Classification Accuracy, Confusion Matrix, Precision, Recall and the F1 Score. They each help us evaluate the models and chose a robust model. Typically, in a business model, Naive Bayes and Logistic Regression are the go-to for ranking predictions by probability, however, we will also try other tress-based models which are better is interpretation. We will use R language to perform the analysis and building a model. The data which we will be using for the analysis is taken from the Kaggle.
 
 ## Background
 
-- This project is entirely based on the **House Prices - Advanced Regression Techniques** Kaggle Competition. With a dataset comprising **81 variables** and **1,460 observations**, it covers nearly every aspect of residential homes in Ames, Iowa. 
-- You can access the dataset by following this link: [House Prices - Advanced Regression Techniques Dataset](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data)
+- This project is entirely based on the **Heart Failure Prediction Dataset** Kaggle Competition. With a dataset comprising **12 variables** and **918 observations**, it covers nearly every aspect of residential homes in Ames, Iowa. 
+- You can access the dataset by following this link: [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+- This project will utilize R language for analysis and developing predicting model.
 
 ## Dataset Overview
 
-- There are two dataset given, test data and train data. Usually, a model is trained on train data and then is tested on test data (hence the names). 
-- The dataset consists of 81 variables and 1,460 observations describing various parameters of residential homes in Ames, Iowa. There are 43 variables that has character or text data type and 38 variiables that has interger or numeric data type.
-- The target variable that I want to predict is the Sales Price.
+- There is a single dataset. The dataset consists of 81 variables and 918 observations. This heart disease dataset is a combination of 5 heart datasets pooled across 11 shared features.
+- The target variable that I want to predict is the 'Heart Disease'. This column has a Booean datatype (for instance, '1' or '0')
 
 ## Methodology
 This project followed these steps:
 1. **Data Quality and Cleaning:** Exploratory data analysis was conducted to check data quality and data cleaning was performed.
-2. **Feature Engineering:** Feature engineering to enhance our model's performance.
-3. **Training Model:** 4 machine learning models were used.
-4. **Prediction and Model Comparison:** Compared model performances using metrics like MSE, MAE, and RMSE.
+2. **Feature Engineering:** Feature engineering to enhance model's performance.
+3. **Training Model:** 3 machine learning models are used.
+4. **Prediction and Model Comparison:** Compared model performances using metrics Area uder ROC curve.
 
 ## Data Cleaning
-Missing values were handles in two ways, first, by **dropping** the variables having more than 40% missing data and, second by **imputing** the missing data with the measures like mean, median or mode. There were 19 variables having missing values, out of which 5 columns that have more than 40% missing values were dropped. The other variables were imputed. The variables that had skewness in their distribution were imputed with median. The categorical variables were imputed with mode. There were some variables whose values were associated with other variables and who had only two categories that were highly skewed. Such variables were dropped.
+There are no missing values in this data. The data is very clean. There are 6 categorical columns, 5 integer columns and 1 decimal columns. The only data quality issue was found with the 6 character variables, which are converted into the factor variables.
 
+## Exploratory Analysis
 
-
-## Feature Engineering
-Feature engineering is done to improve the data quality and model performance. Variables were assessed differently depending on their data type. Following steps were performed for feature engineering:
-- It was observed that the variable **YrSold** has no effect on Sales Price and hence it was dropped.
-- Ordinal values were assinged to certain categorical variables to reduce dimensionality.
 
 ## Training Model
 
 Before training model, it is important to check the linearity assumption by plotting a histogram of our target variable sale price. The left graph given below is the distribution of the **Sales Price** and we can see that the sale price distribution is rightly skewed which means that the assumption of linearity may not be true here. In order to mitigate this, I took the natural log of the sale price and check the distribution. On the right it be can seen that the log distribution looks normally distributed, hence I shall be training this model using the Log of the target variable. 
-
-
 
 I employed Multiple Linear Regression (with Cross Validation), Ridge Linear Regression (with Cross Validation), Lasso Linear Regression (with Cross Validation), and Random Forest regression models.
 
