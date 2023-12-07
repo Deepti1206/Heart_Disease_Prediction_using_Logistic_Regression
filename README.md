@@ -30,7 +30,7 @@
 
 ## Business Understanding
 
-The World Health Organization (WHO) estimates that 17.9 million people die from cardiovascular diseases (CVDs), which are the leading cause of death worldwide in the year 2022. It is possible to reduce the numbers of premature death caused by cardiovascular diseases (CVDs) if it is diagnosed in earlier stage. By studying the diagnostic test results of the people, it is possible to detect if the patient is at the high risk of cardiovascular disease. This analysis can be achieved with the help of the machine learning models. Through this project, we intend to develop a prediction models to understand existing data and filter out the target population who could benefit by taking precautionary measures at early stages. This analysis will help the patients who are at high risk of cardiovascular disease to take precautionary measures. The goal of this project is to predict how susceptible a patient is to a cardiovascular disease (CVD) based on the various diagnostic test measures in the database. In this project, we will use multiple machine learning models and test each model’s accuracy using Classification Accuracy, Confusion Matrix, Precision, Recall and the F1 Score. They each help us evaluate the models and chose a robust model. Typically, in a business model, Naive Bayes and Logistic Regression are the go-to for ranking predictions by probability, however, we will also try other tress-based models which are better is interpretation. We will use R language to perform the analysis and building a model. The data which we will be using for the analysis is taken from the Kaggle.
+The World Health Organization (WHO) estimates that millions of people die from cardiovascular diseases (CVDs), which are the leading cause of death worldwide in the year 2022. It is possible to reduce the numbers of premature death caused by cardiovascular diseases (CVDs) if it is diagnosed in earlier stage. By studying the diagnostic test results of the people, it is possible to detect if the patient is at the high risk of cardiovascular disease. This analysis can be achieved with the help of the machine learning models. Through this project, I intend to develop a prediction models to understand existing data and filter out the target population who could benefit by taking precautionary measures at early stages. This analysis will help the patients who are at high risk of cardiovascular disease to take precautionary measures. The goal of this project is to predict how susceptible a patient is to a cardiovascular disease (CVD) based on the various diagnostic test measures in the database.
 
 ## Background
 
@@ -41,14 +41,14 @@ The World Health Organization (WHO) estimates that 17.9 million people die from 
 ## Dataset Overview
 
 - There is a single dataset. The dataset consists of 12 variables and 918 observations. This heart disease dataset is a combination of 5 heart datasets pooled across 11 shared features.
-- The target variable that I want to predict is the 'Heart Disease'. This column has a Booean datatype (for instance, '1' or '0')
+- The target variable that I want to predict is the 'Heart Disease'. This column has a Boolean datatype (for instance, '1' or '0')
 
 <img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/1h.png" width="500" height="350">
 
 ## Methodology
 This project followed these steps:
 1. **Data Quality and Cleaning:** Exploratory data analysis was conducted to check data quality and data cleaning was performed.
-2. **Feature Engineering:** Feature engineering to enhance model's performance.
+2. **Exploratory analysis:** To find the correlation between heart disease and differnt factors
 3. **Training Model:** 3 machine learning models are used.
 4. **Prediction and Model Comparison:** Compared model performances using metrics Area uder ROC curve.
 
