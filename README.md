@@ -17,7 +17,7 @@
 - [Dataset Overview](#dataset-overview)
 - [Methodology](#methodology)
 - [Data Cleaning](#data-cleaning)
-- [Exploratory Analysis](#feature-engineering)
+- [Exploratory Analysis](#exploratory-analysis)
 - [Training Model](#training-model)
 - [Prediction and Model Comparison](#prediction-and-model-comparison)
 - [Conclusion](#conclusion)
@@ -40,8 +40,10 @@ The World Health Organization (WHO) estimates that 17.9 million people die from 
 
 ## Dataset Overview
 
-- There is a single dataset. The dataset consists of 81 variables and 918 observations. This heart disease dataset is a combination of 5 heart datasets pooled across 11 shared features.
+- There is a single dataset. The dataset consists of 12 variables and 918 observations. This heart disease dataset is a combination of 5 heart datasets pooled across 11 shared features.
 - The target variable that I want to predict is the 'Heart Disease'. This column has a Booean datatype (for instance, '1' or '0')
+
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/1h.png" width="500" height="350">
 
 ## Methodology
 This project followed these steps:
@@ -53,65 +55,69 @@ This project followed these steps:
 ## Data Cleaning
 There are no missing values in this data. The data is very clean. There are 6 categorical columns, 5 integer columns and 1 decimal columns. The only data quality issue was found with the 6 character variables, which are converted into the factor variables.
 
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/2h.png" width="500" height="350">
+
 ## Exploratory Analysis
 
+A correlation analysis was used to study the linear relation between different variables. Here is the heatmaop of correlation analysis.
+
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/3h.png" width="500" height="400">
 
 ## Training Model
 
-Before training model, it is important to check the linearity assumption by plotting a histogram of our target variable sale price. The left graph given below is the distribution of the **Sales Price** and we can see that the sale price distribution is rightly skewed which means that the assumption of linearity may not be true here. In order to mitigate this, I took the natural log of the sale price and check the distribution. On the right it be can seen that the log distribution looks normally distributed, hence I shall be training this model using the Log of the target variable. 
+I am going to use 3 classification model since out target variable **Heart Disease**, which is a categorical column with '0' and '1'.
 
-I employed Multiple Linear Regression (with Cross Validation), Ridge Linear Regression (with Cross Validation), Lasso Linear Regression (with Cross Validation), and Random Forest regression models.
+I employed Logistic Regression, Decision Tree and, Random Forest models.
 
-1. Multiple Linear Regression (with Cross Validation)
+**1. Logistic Regression**
 
-In multiple linear regression, the output of the data is interpreted using the diagnostics plot:
--Residual v/s fitted graph doesn't show any pattern in the graph, which means that there is no non-linear relationship between the predictor and outcome variables 
-- Normal Q-Q:The residuals are normally distributed. The points forming but there are few outliers at the lower side
-- Scale-Location: This graphs checks the assumption of homoscedasticity and as seen the residuals are scattered randomly which satisfies assumption
-- Residual vs Leverage: This graphs help us to identify the influential outliers that might affect the analysis and here outside Cook's distance (red dotted) we find two outliers.
+In logistic regression, the output of the data predicted is a categorical variable. Below is the ROC of the logistic regression. If the curve is close senstivity line, the  model is performing better.
 
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/5h.png" width="500" height="350">
 
-   
-2. Ridge Linear Regression (with Cross Validation)
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/4h.png" width="500" height="350">
 
-In Ridge linear regression, it penalize using Lamda on the co-efficient, if lamda is increasing, the co-efficients tends towards zero. We find the best lamda, which gives us the important variables for our model. So here, the best lamda is 0.25 and it provides the top 30 important variables as Condition2PosN, Condition2PosA, FunctionalSev, FunctionalMaj2, RoofMatWdshngl, ExtFirstBrkComm and so on.
+**2. Decision Tree**
 
+In Decision tree, a data is split as per the most important features in order to classify or predict data in classes.
+It also finds out important features such as 
 
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/6h.png" width="500" height="350">
 
-3. Lasso Linear Regression (with Cross Validation)
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/6.1h.png" width="500" height="350">
 
-In lasso regression, the lamda shrinks coefficient completely to zero and removes the unnecessary predictors. So here, the best lamda is very small 0.05 and it provides the top 30 important variables as . The topmost variables are OverallQual, GarageCars, KitchenQual, MSZoningRM and BsmtQual
+3. Random Forest 
 
+Random forest is an algorithm for supervised learning. An ensemble of decision trees making it a forest, often trained using the bagging approach.
 
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/7h.png" width="500" height="400">
 
-4. Random Forest regression
-
-In random forest, Mean of squared residuals: 0.01841201 means the prediction error. 88.45% variance is explained by the variables. In the first plot, the higher the increase in MSE, the important is the variable. we see that GrLivArea, Neighborhood, TotalBsmiSF and so on are most important. In second, node purity is depended on the Gini Index and here the important variables are Overall Qual, Neighborhood, GrLivArea etc.
-
-
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/8.1h.png" width="500" height="400">
 
 ## Prediction and Model Comparison
-We applied the trained models to the test dataset and evaluated their performance using RMSE. The model who has the lowest RMSE is the best from the other in predicting the target variable. In this terms, Lasso regression yielded the lowest RMSE, making it the best choice for predicting house prices.
 
+After evaluating the accuracy of the model based on the ROC_curve, we find that the accuracy of the **Logistic Regression** is the best which is 92%.
 
+<img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/8h.png" width="650" height="500">
 
 ## Conclusion
-As per the analysis on the test data, it is seen that Root Mean Square error of Lasso regression is lowest and hence we select the **Lasso Regression** the best fit for our prediction of sale price.The topmost variables are **OverallQual, GarageCars, KitchenQual, MSZoningRM and BsmtQual.**
+As per the analysis on the test data, it is seen that the area under ROC curve of Logistic regression is the best **(92%)** and hence we select the **Logistic Regression** the best fit for our prediction of heart disease. The topmost variables are **Chest Pain type, Sex, Cholesterol, Fastings and Exercise Angina.**
 
 ## Recommendation
 
-As per the analysis, it is identified that the features/factors such as Overall Quality of the House, Garage size, the location or zone and the basement quality plays importamt role in deciding the price of the house. The Lasso Regression model will give the best estimate than any other model for predicting the house price based on different factors.
+As per the analysis, it is identified that the factors such as Chest Pain type, Sex, Cholesterol, Fastings and Exercise Angina plays an important factors in predicting the heart disease. The Logistic Regression model will give the best estimate than any other model for predicting the heart disease in a patient with 92% accuracy.
 
 ## References
 
-- Kaggle House Price Prediction Competition: [Link](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
+- [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
 - R Documentation: [Link](https://www.rdocumentation.org/)
-- Output Summary: [GitHub Repository](https://github.com/Deepti1206/House_Price_Prediction_Project)
 
 ## File Directory
 
-- [`Codes`](https://github.com/Deepti1206/House_Price_Prediction_Project/tree/main/Codes)
-- [`Visuals`](https://github.com/Deepti1206/House_Price_Prediction_Project/tree/main/Visuals)
-- [`Data`](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
+[Codes](https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Heart_disease_prediction.R)   
+[Data](https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/tree/main/Data)   
+[Images](https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/tree/main/Image)
+
+
 
 
