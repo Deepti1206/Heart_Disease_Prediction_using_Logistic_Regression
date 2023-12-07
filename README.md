@@ -7,7 +7,7 @@
     <span style="color: black;">Deepti Vijay Khandagale</span>
 </h3>
 <p align="right-aligned">
-  <img src=" " width="600" height="400">
+  <img src="https://github.com/Deepti1206/Heart_Disease_Prediction_using_Logistic_Regression/blob/main/Image/images%20(1).jpeg" width="600" height="400">
 </p>
 
 ## Table of Contents
